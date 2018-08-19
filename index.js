@@ -1,15 +1,15 @@
 'use strict';
 
-module.exports = arr => {
+const mergeSort = arr => {
 		if (arr.length < 2) {
 			return arr;
 		}
 
-    let middle = parseInt(arr.length / 2);
+    let middle = Math.floor(arr.length / 2);
     let left   = arr.slice(0, middle);
-    let right  = arr.slice(middle, arr.length);
+    let right  = arr.slice(middle);
 
-    return merge((left), (right));
+    return merge(mergeSort(left), mergeSort(right));
 }
 
 const merge = (left, right) => {
@@ -29,3 +29,5 @@ const merge = (left, right) => {
 
     return arr;
 }
+
+module.exports = mergeSort;
